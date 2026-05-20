@@ -32,6 +32,13 @@ async function run() {
             res.send(result);
 
         })
+
+        app.get("/featured", async(req, res) => {
+            const cursor = usersCollection.find().limit(4);
+            const result = await cursor.toArray();
+            res.send(result)
+        })
+
         // single grate
         app.get("/all-appointment/:id", async (req, res) => {
             const { id } = req.params;
