@@ -39,6 +39,17 @@ async function run() {
             res.send(result)
         })
 
+       
+
+        app.get("/all-appointment/:id", async (req, res ) =>{
+            const {id} = req.params
+            const result = await usersCollection.findOne({_id: new ObjectId(id)})
+            res.json(result)
+
+        })
+
+        
+
         // single grate
         app.get("/all-appointment/:id", async (req, res) => {
             const { id } = req.params;
@@ -63,4 +74,5 @@ app.get('/', (req, res) => {
 
 app.listen(PORT, () => {
     console.log(`server running on port ${PORT}`);
-})
+}) 
+
